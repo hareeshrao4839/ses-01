@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ng1-conf
+  namespace: default
+data:
+  a2.conf: "sample conf\ndig ding \nkhkjhk"

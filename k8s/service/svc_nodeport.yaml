@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ngi-s
+  namespace: app1
+spec:
+  ports:
+  - port: 8080
+    targetPort: 80
+    protocol: TCP
+    nodePort: 31303
+  type: NodePort  
+  selector:
+    app: nginx
+# this is used for accessing service outside of k8s via nodeip:nodePort

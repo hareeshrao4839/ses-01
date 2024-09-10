@@ -1,0 +1,37 @@
+gcloud compute instances delete   <vm-name> \
+--project=<project-ID> --zone=<zone> \
+
+
+for try in {1..200} ; do
+    curl -s -o /dev/null -w "%{http_code}" http://<ip>
+done
+
+
+curl -s -o /dev/null -w "%{http_code}" http://<ip>
+
+kubectl create deployment ngi-x --image=nginx:latest
+kubectl create po ngi-x --image=nginx:latest
+
+
+kubectl get configmap ng1-conf -n default -o yaml
+kubectl get configmap ng-conf -n default -o yaml
+kubectl create namespace <namespace_Name>
+kubectl describe ns <namespace_Name>
+kubectl describe deployment <deployment_Name>
+kubectl get ns <namespace_Name> -o yaml
+kubectl get deployment <deployment_Name> -o yaml
+
+kubectl get configmaps
+kubectl apply -f /ses-01/k8s/deployment/d1-cm.yaml
+kubectl delete <object-type> <object-name> 
+kubectl apply -f /ses-01/k8s/deployment/d1-cm.yaml
+kubectl apply -f /ses-01/k8s/deployment/d1-cm.yaml
+kubectl get po
+kubectl exec -it ngx-d-6d68f98584-zc4v9 bash
+kubectl exec -it ngx-d-6d68f98584-zc4v9 sh
+kubectl exec -it ngx-d-6d68f98584-zc4v9 -n default sh
+kubectl exec -it ngx-d-6d68f98584-zc4v9 -n default bash
+kubectl exec -it ngx-d-6d68f98584-zc4v9 -n default -- ls /etc/config
+kubectl exec -it ngx-d-6d68f98584-zc4v9 -n default -- ls -al /etc/config
+kubectl exec -it ngx-d-6d68f98584-zc4v9 -n default -- cat /etc/config/a2.conf
+kubectl create configmap ng-conf --from-file=ses-01/k8s/configmap/a1.conf
