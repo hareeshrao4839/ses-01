@@ -35,3 +35,31 @@ kubectl exec -it ngx-d-6d68f98584-zc4v9 -n default -- ls /etc/config
 kubectl exec -it ngx-d-6d68f98584-zc4v9 -n default -- ls -al /etc/config
 kubectl exec -it ngx-d-6d68f98584-zc4v9 -n default -- cat /etc/config/a2.conf
 kubectl create configmap ng-conf --from-file=ses-01/k8s/configmap/a1.conf
+
+1653  kubectl create secret generic my-sec --from-file=a1.conf
+ 1654  kubectl delete secret my-sec
+ 1655  kubectl create secret generic my-sec --from-file=a1.conf
+ 1656  kubectl get secret my-sec  -o yaml
+ 1657  kubectl delete secret my-sec
+ 1658  kubectl create secret generic my-sec --from-file=a1.conf
+ 1659  kubectl get secret my-sec  -o yaml
+ 1660  kubectl edit secret my-sec
+ 1661  kubectl create secret generic --from-literal=pass=aaahhhhh
+ 1662  kubectl create secret generic my-sec1 --from-literal=pass=aaahhhhh
+ 1663  kubectl create secret tls my-sec3 --client-key=example.com.key --client-certificate=example.com.crt
+ 1664  kubectl create secret tls my-sec3 --client-key=./example.com.key --client-certificate=./example.com.crt
+ 1665  kubectl create secret tls my-sec3 --key=example.com.key --cert=example.com.crt
+ 1666  kubectl get secrets
+ 1667  kubectl get secret my-sec3 -o yaml
+ 1668  kubectl get secret my-sec1  -o yaml
+  1671  kubectl get secret my-sec1  -o yaml
+ 1672  kubectl apply -f /Users/ragnar/Desktop/mystuff/k8s/TNG_RnD/TNG_CICD/ses-01/k8s/deployment/d1-secrets.yaml
+ 1673  kubectl get po
+ 1674  kubectl exec -it ngx-d-94dfbc67b-nrfpp -- ls -al /etc/dat1
+ 1675  kubectl apply -f /Users/ragnar/Desktop/mystuff/k8s/TNG_RnD/TNG_CICD/ses-01/k8s/deployment/d1-secrets.yaml
+ 1676  kubectl get po
+ 1677  kubectl get po
+ 1678  kubectl exec -it ngx-d-76499fdbcc-8bqkv -- ls -al /etc/dat1
+ 1679  kubectl exec -it ngx-d-76499fdbcc-8bqkv -- ls -al /etc/certs
+ 1680  kubectl exec -it ngx-d-76499fdbcc-8bqkv -- echo $pass
+ 1681  kubectl exec -it ngx-d-76499fdbcc-8bqkv -- env
