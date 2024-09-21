@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Chart.Name}}-cm
+  namespace: {{ .Release.Namespace}}
+data:
+  config.hcl: |
+{{.Files.Get "config.hcl_file" | indent 4 }}

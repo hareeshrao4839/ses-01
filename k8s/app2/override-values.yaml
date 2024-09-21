@@ -1,0 +1,58 @@
+App:
+  Name: digdong
+  gcp_sa: svc-app2
+  gcp_projectID: complie_cat_123
+
+
+App_Labels:
+  type: ng1
+  env: bld
+  maintainer: helm
+deployment_Version: v1d1
+
+image:
+  name: reg_image 
+  tag: latest
+Port:
+  Number: 8080
+  Name: tango
+replicaCount: 1
+DeploymentStrategyType: Recreate 
+
+resources:
+  req:
+    mem: "100Mi"
+    cpu: "50m"
+  lim:
+    mem: "200Mi"
+    cpu: "100m"    
+# resources:
+#   requests:
+#     memory: "100Mi"
+#     cpu: "50m"
+#   limits:
+#     memory: "100Mi"
+#     cpu: "50m"
+
+volumesState:
+  enabled: true
+
+volumeMounts:
+  - name: certs
+    mountPath: "/etc/certs"
+  - name: conf
+    mountPath: "/etc/conf-custome"    
+volumes:
+  - name: certs
+    secret:
+      secretName: s1-sec
+  - name: conf
+    configMap:
+      name: ng1-conf       
+
+vault:
+  enabled: false
+
+keys:
+  name1: my_key
+  name2: my_key2
