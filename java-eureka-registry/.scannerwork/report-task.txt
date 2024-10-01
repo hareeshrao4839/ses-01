@@ -1,0 +1,6 @@
+projectKey=eureka
+serverUrl=http://0.0.0.0:9001
+serverVersion=9.9.7.96285
+dashboardUrl=http://0.0.0.0:9001/dashboard?id=eureka
+ceTaskId=AZJJZeORhrQpl4hkVmh5
+ceTaskUrl=http://0.0.0.0:9001/api/ce/task?id=AZJJZeORhrQpl4hkVmh5
