@@ -63,3 +63,81 @@ kubectl create configmap ng-conf --from-file=ses-01/k8s/configmap/a1.conf
  1679  kubectl exec -it ngx-d-76499fdbcc-8bqkv -- ls -al /etc/certs
  1680  kubectl exec -it ngx-d-76499fdbcc-8bqkv -- echo $pass
  1681  kubectl exec -it ngx-d-76499fdbcc-8bqkv -- env
+
+
+java installation 
+sudo apt install openjdk-* default-jre gnupg2 apt-transport-https wget -y
+ls -al /usr/lib/jvm/        // check what version java installed 
+java --version 
+
+
+maven install
+apt install maven
+ls -al /usr/share/maven 
+mvn -v
+
+
+sonar-scanner installation 
+cd /opt/
+ls
+wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.8.0.2856-linux.zip
+unzip sonar-scanner-cli-4.8.0.2856-linux.zip
+
+mv sonar-scanner-4.8.0.2856-linux sonar-scanner
+ls
+rm -rf sonar-scanner-cli-4.8.0.2856-linux.zip
+ls
+ln -s /opt/sonar-scanner/bin/sonar-scanner /usr/local/bin/sonar-scanner
+
+
+home variable/path set 
+vim ~/.bashrc
+below lines should be added in ~/.bashrc
+
+export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
+export M2_HOME=/usr/share/maven
+export PATH=${JAVA_HOME}/bin:${M2_HOME}/bin:/opt/sonar-scanner/bin:$PATH
+
+
+jenkins installation ( if its debian) =or follow this https://www.jenkins.io/doc/book/installing/linux/
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]" \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt-get update
+sudo apt-get install jenkins
+
+
+sonarqube : run via docker composer 
+cd ses-01/sonar/dkr-compose
+docker compose up > /dev/null 2>&1 &
+
+docker compose stop
+
+docker install : follow ref for debian https://docs.docker.com/engine/install/debian/
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+
+
+
+
+
+
+  /usr/share/maven/bin
+
+
+  /usr/lib/jvm/java-17-openjdk-amd64
