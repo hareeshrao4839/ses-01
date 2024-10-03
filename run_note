@@ -112,6 +112,7 @@ sudo apt-get install jenkins
 
 sonarqube : run via docker composer 
 cd ses-01/sonar/dkr-compose
+sudo su -c 'echo 262144 > "/proc/sys/vm/max_map_count"'
 docker compose up > /dev/null 2>&1 &
 
 docker compose stop
